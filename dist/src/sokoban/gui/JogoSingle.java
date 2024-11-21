@@ -1,0 +1,496 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package sokoban.gui;
+
+import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.Clip;
+import sokoban.PuzzlesSingle;
+import sokoban.SokobanSons;
+
+/**
+ * A classe JogoSingle representa a interface gráfica do jogo Sokobaan na variante singleplayer.
+ * Ela contém métodos para inicialização da interface, manipulação de eventos de teclado,
+ * atualização de estatísticas do jogo e controle dos elementos gráficos.
+ * 
+ * @author Tiago Paiva
+ * @author Mário Bonacho
+ */
+public class JogoSingle extends javax.swing.JFrame implements Runnable {
+    
+    //Inicializar som
+    Clip clip;
+    Clip endOfLevel;
+    
+
+    //Inicilizar o número do puzzle
+    private int numeroPuzzle = 1;
+    public String guardarPuzzle;
+
+    //Tempo
+    private Thread t;
+    private long ini;
+
+    /**
+     * Creates new form JogoSingle1
+     */
+    public JogoSingle() {
+        initComponents();
+        t = new Thread(this);
+        ini = System.currentTimeMillis();
+        t.start();
+        this.setLocationRelativeTo(null);
+        atualizarNivelPuzzle();
+        sokobanSingle1.restartStatistics();
+        //Muda o cor de fundo
+        getContentPane().setBackground(new java.awt.Color(97,153,180,255));
+        
+        //Inicializar a musica de fundo
+        clip = SokobanSons.carregarSom("src/sokoban/resources/multimedia/backgroundMusic.wav");
+        SokobanSons.setVolume(clip, 0.5);
+        clip.loop(100);
+    }
+
+    /**
+     * Define o puzzle atual.
+     * 
+     * @param puzzle O puzzle a ser definido.
+     */
+    public void setPuzzle(String puzzle) {
+        sokobanSingle1.setPuzzle(puzzle);
+        for (int i = 1; i <= 60; i++) {
+            if (puzzle.equals(PuzzlesSingle.getPuzzleSingle(i))) {
+                numeroPuzzle = i;
+                break;
+            }
+        }
+        sokobanSingle1.restartStatistics();
+        guardaNivelPuzzle();
+        atualizarNivelPuzzle();
+    }
+
+    /**
+     * Atualiza os parâmetros do jogo, como passos, empurrões, etc.
+     */
+    public void parametros() {
+        //Contagem dos passos
+        passosLabel.setText("Passos : " + sokobanSingle1.getPassos());
+        //Contagem de caixas arrastadas
+        empurroesLabel.setText("Empurrões : " + sokobanSingle1.getEmpurroes());
+        if (sokobanSingle1.isComplete()) {
+            //inicializar som quando nivel é terminado
+            clip.stop();
+            endOfLevel = SokobanSons.carregarSom("src/sokoban/resources/multimedia/endOfLevel.wav"); 
+            endOfLevel.start();
+            
+            // Se o jogo estiver completo, exibe uma mensagem de parabéns 
+            FimPuzzleSingle fimjogo = new FimPuzzleSingle(this, sokobanSingle1);
+            fimjogo.setLocationRelativeTo(null);
+            fimjogo.setVisible(true);
+        }
+
+    }
+
+    /**
+     * Atualiza o nível atual do puzzle na interface gráfica.
+     */
+    public void atualizarNivelPuzzle() {
+        labelNivel.setText("Nível : " + numeroPuzzle);
+        //Altera a label para o nivel de dificuldade
+        if (numeroPuzzle >= 1 && numeroPuzzle <= 20) {
+            dificuldadeLabel.setText("Dificuldade : Fácil");
+        } else if (numeroPuzzle >= 21 && numeroPuzzle <= 40) {
+            dificuldadeLabel.setText("Dificuldade : Normal");
+        } else if (numeroPuzzle >= 41 && numeroPuzzle <= 60) {
+            dificuldadeLabel.setText("Dificuldade : Difícil");
+        }
+    }
+
+    public int getNumeroPuzzle() {
+        return numeroPuzzle;
+    }
+
+    /**
+     * Retorna o tempo decorrido desde o início do jogo.
+     * 
+     * @author Professor Paulo Santos
+     * 
+     * @return O tempo decorrido em segundos.
+     */
+    public long getTempoDecorrido() {
+        long end = System.currentTimeMillis();
+        return (end - ini) / 1000;
+    }
+
+    /**
+     * Guarda o nível atual do puzzle.
+     */
+    public void guardaNivelPuzzle() {
+        //Armazena o nivel do puzzle
+        guardarPuzzle = PuzzlesSingle.getPuzzleSingle(numeroPuzzle);
+        sokobanSingle1.setPuzzle(guardarPuzzle);
+    }
+
+    /**
+     * Reinicia as estatísticas do jogo.
+     */
+    public void restartstats() {
+        sokobanSingle1.setPuzzle(guardarPuzzle);
+        //sokobanSingle2.restartStatistics();//Retorna os passos e as caixas empurradas a 0
+        passosLabel.setText("Passos: " + sokobanSingle1.getPassos());
+        empurroesLabel.setText("Empurrões : " + sokobanSingle1.getEmpurroes());
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        upPanel = new javax.swing.JPanel();
+        btnVoltar = new javax.swing.JButton();
+        btnRestart = new javax.swing.JButton();
+        btnUndo = new javax.swing.JButton();
+        btnSetting = new javax.swing.JButton();
+        btnRedo = new javax.swing.JButton();
+        downPanel = new javax.swing.JPanel();
+        labelNivel = new javax.swing.JLabel();
+        dificuldadeLabel = new javax.swing.JLabel();
+        passosLabel = new javax.swing.JLabel();
+        btnTimer = new javax.swing.JLabel();
+        empurroesLabel = new javax.swing.JLabel();
+        rightPanel = new javax.swing.JPanel();
+        leftPanel = new javax.swing.JPanel();
+        sokobanSingle1 = new sokoban.SokobanSingle();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sokobaan");
+        setBackground(new java.awt.Color(97, 153, 180));
+        setPreferredSize(new java.awt.Dimension(808, 586));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
+
+        upPanel.setBackground(new java.awt.Color(97, 153, 180));
+        upPanel.setFocusable(false);
+        upPanel.setPreferredSize(new java.awt.Dimension(808, 75));
+
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sokoban/resource/btn/btnReturn.png"))); // NOI18N
+        btnVoltar.setBorderPainted(false);
+        btnVoltar.setContentAreaFilled(false);
+        btnVoltar.setFocusable(false);
+        btnVoltar.setPreferredSize(new java.awt.Dimension(32, 32));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        btnRestart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sokoban/resource/btn/btnRestart.png"))); // NOI18N
+        btnRestart.setBorderPainted(false);
+        btnRestart.setContentAreaFilled(false);
+        btnRestart.setFocusable(false);
+        btnRestart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestartActionPerformed(evt);
+            }
+        });
+
+        btnUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sokoban/resource/btn/btnUndo.png"))); // NOI18N
+        btnUndo.setBorderPainted(false);
+        btnUndo.setContentAreaFilled(false);
+        btnUndo.setFocusable(false);
+        btnUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUndoActionPerformed(evt);
+            }
+        });
+
+        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sokoban/resource/btn/btnSetting.png"))); // NOI18N
+        btnSetting.setBorderPainted(false);
+        btnSetting.setContentAreaFilled(false);
+        btnSetting.setFocusable(false);
+        btnSetting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSettingActionPerformed(evt);
+            }
+        });
+
+        btnRedo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sokoban/resource/btn/btnRedo.png"))); // NOI18N
+        btnRedo.setBorderPainted(false);
+        btnRedo.setContentAreaFilled(false);
+        btnRedo.setFocusable(false);
+        btnRedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRedoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout upPanelLayout = new javax.swing.GroupLayout(upPanel);
+        upPanel.setLayout(upPanelLayout);
+        upPanelLayout.setHorizontalGroup(
+            upPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(upPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 618, Short.MAX_VALUE)
+                .addComponent(btnUndo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRedo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        upPanelLayout.setVerticalGroup(
+            upPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(upPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(upPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnUndo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRedo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(upPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(upPanel, java.awt.BorderLayout.PAGE_START);
+
+        downPanel.setBackground(new java.awt.Color(97, 153, 180));
+        downPanel.setFocusable(false);
+        downPanel.setPreferredSize(new java.awt.Dimension(808, 100));
+        downPanel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                downPanelKeyPressed(evt);
+            }
+        });
+
+        labelNivel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelNivel.setText("Nivel : ");
+        labelNivel.setFocusable(false);
+
+        dificuldadeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        dificuldadeLabel.setText("Dificuldade : ");
+        dificuldadeLabel.setFocusable(false);
+
+        passosLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        passosLabel.setText("Passos : 0");
+        passosLabel.setFocusable(false);
+
+        btnTimer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnTimer.setText("Tempo : ");
+        btnTimer.setFocusable(false);
+
+        empurroesLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        empurroesLabel.setText("Empurrões : 0 ");
+        empurroesLabel.setFocusable(false);
+
+        javax.swing.GroupLayout downPanelLayout = new javax.swing.GroupLayout(downPanel);
+        downPanel.setLayout(downPanelLayout);
+        downPanelLayout.setHorizontalGroup(
+            downPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(downPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(labelNivel)
+                .addGap(34, 34, 34)
+                .addComponent(dificuldadeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addComponent(btnTimer)
+                .addGap(45, 45, 45)
+                .addComponent(passosLabel)
+                .addGap(32, 32, 32)
+                .addComponent(empurroesLabel)
+                .addGap(25, 25, 25))
+        );
+        downPanelLayout.setVerticalGroup(
+            downPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, downPanelLayout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addGroup(downPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTimer)
+                    .addComponent(passosLabel)
+                    .addComponent(empurroesLabel)
+                    .addComponent(labelNivel)
+                    .addComponent(dificuldadeLabel))
+                .addContainerGap())
+        );
+
+        getContentPane().add(downPanel, java.awt.BorderLayout.PAGE_END);
+
+        rightPanel.setBackground(new java.awt.Color(97, 153, 180));
+        rightPanel.setFocusable(false);
+        rightPanel.setPreferredSize(new java.awt.Dimension(100, 75));
+        getContentPane().add(rightPanel, java.awt.BorderLayout.LINE_END);
+
+        leftPanel.setBackground(new java.awt.Color(97, 153, 180));
+        leftPanel.setFocusable(false);
+        leftPanel.setPreferredSize(new java.awt.Dimension(100, 10));
+        getContentPane().add(leftPanel, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(sokobanSingle1, java.awt.BorderLayout.CENTER);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        //Botão voltar:
+        if (numeroPuzzle >= 1 && numeroPuzzle <= 20) {
+            guardaNivelPuzzle();
+            atualizarNivelPuzzle();
+            MenuNiveisFacil menuNiveis = new MenuNiveisFacil();
+            menuNiveis.setLocationRelativeTo(null);
+            menuNiveis.setVisible(true);
+            this.dispose();
+        }
+        if (numeroPuzzle >= 21 && numeroPuzzle <= 40) {
+            guardaNivelPuzzle();
+            atualizarNivelPuzzle();
+            MenuNiveisMedia menuNiveis = new MenuNiveisMedia();
+            menuNiveis.setLocationRelativeTo(null);
+            menuNiveis.setVisible(true);
+            this.dispose();
+        }
+        if (numeroPuzzle >= 41 && numeroPuzzle <= 60) {
+            guardaNivelPuzzle();
+            atualizarNivelPuzzle();
+            MenuNiveisDificil menuNiveis = new MenuNiveisDificil();
+            menuNiveis.setLocationRelativeTo(null);
+            menuNiveis.setVisible(true);
+            this.dispose();
+        }
+        //parar musica de fundo quando volta ao menu
+        clip.stop();
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
+        // Botão restart
+        sokobanSingle1.apagarPuzzle();
+        sokobanSingle1.setPuzzle(PuzzlesSingle.getPuzzleSingle(numeroPuzzle));
+        sokobanSingle1.restartStatistics();
+        passosLabel.setText("Passos: " + sokobanSingle1.getPassos());
+        empurroesLabel.setText("Empurrões : " + sokobanSingle1.getEmpurroes());
+        ini = System.currentTimeMillis();
+    }//GEN-LAST:event_btnRestartActionPerformed
+
+    private void btnUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoActionPerformed
+        // Botão undo:
+        sokobanSingle1.undo(numeroPuzzle);
+        passosLabel.setText("Passos: " + sokobanSingle1.getPassos());
+    }//GEN-LAST:event_btnUndoActionPerformed
+
+    private void downPanelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_downPanelKeyPressed
+
+    }//GEN-LAST:event_downPanelKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // Teclas: 
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+            sokobanSingle1.movePlayer(-1, 0, 1);
+            parametros();
+        } else if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+            sokobanSingle1.movePlayer(1, 0, 1);
+            parametros();
+        } else if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            sokobanSingle1.movePlayer(0, -1, 1);
+            parametros();
+        } else if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            sokobanSingle1.movePlayer(0, 1, 1);
+            parametros();
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void btnRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedoActionPerformed
+        // Botão redo:
+        sokobanSingle1.redo();
+        passosLabel.setText("Passos: " + sokobanSingle1.getPassos());
+    }//GEN-LAST:event_btnRedoActionPerformed
+
+    private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
+        // Botão Definições:
+        Definicoes definicoes = new Definicoes();
+        definicoes.setLocationRelativeTo(null);
+        definicoes.setVisible(true);
+    }//GEN-LAST:event_btnSettingActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(JogoSingle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JogoSingle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JogoSingle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JogoSingle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JogoSingle().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRedo;
+    private javax.swing.JButton btnRestart;
+    private javax.swing.JButton btnSetting;
+    private javax.swing.JLabel btnTimer;
+    private javax.swing.JButton btnUndo;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel dificuldadeLabel;
+    private javax.swing.JPanel downPanel;
+    private javax.swing.JLabel empurroesLabel;
+    private javax.swing.JLabel labelNivel;
+    private javax.swing.JPanel leftPanel;
+    private javax.swing.JLabel passosLabel;
+    private javax.swing.JPanel rightPanel;
+    private sokoban.SokobanSingle sokobanSingle1;
+    private javax.swing.JPanel upPanel;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        while (true) {
+            long end = System.currentTimeMillis();
+            long time = (end - ini) / 1000;
+            btnTimer.setText("Tempo : " + time);
+            try {
+                t.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(JogoSingle.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+}

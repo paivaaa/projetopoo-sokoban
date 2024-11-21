@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Player">
+  <ClassDiagramComponents>
+    <Class name="Player" package="sokoban.cells" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="coordX" type="int" visibility="private"/>
+        <Field name="coordY" type="int" visibility="private"/>
+        <Field name="playerNumber" type="int" visibility="private" isFinal="true"/>
+        <Field name="move" type="Clip" visibility="package"/>
+        <Field name="PLAYER1" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="PLAYER2" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="playerNumber"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="moveXY" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+        </Method>
+        <Method name="getCoordX" returnType="int" visibility="public"/>
+        <Method name="setCoordX" returnType="void" visibility="public">
+          <Argument type="int" name="coordX"/>
+        </Method>
+        <Method name="getCoordY" returnType="int" visibility="public"/>
+        <Method name="setCoordY" returnType="void" visibility="public">
+          <Argument type="int" name="coordY"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

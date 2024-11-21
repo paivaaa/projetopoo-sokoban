@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Element">
+  <ClassDiagramComponents>
+    <Class name="Element" package="sokoban.cells" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="myImg" type="Image" visibility="protected"/>
+        <Field name="path" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="theme" type="String" visibility="protected" isStatic="true"/>
+        <Field name="imageName" type="String" visibility="protected"/>
+        <Field name="myColor" type="Color" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="imageName"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="draw" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+          <Argument type="int" name="px"/>
+          <Argument type="int" name="py"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+        </Method>
+        <Method name="getMyImg" returnType="Image" visibility="public"/>
+        <Method name="setMyImg" returnType="void" visibility="public">
+          <Argument type="Image" name="myImg"/>
+        </Method>
+        <Method name="loadImage" returnType="Image" visibility="public" isFinal="true">
+          <Argument type="String" name="resourceName"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

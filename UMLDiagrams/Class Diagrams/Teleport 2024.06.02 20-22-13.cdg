@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Teleport">
+  <ClassDiagramComponents>
+    <Class name="Teleport" package="sokoban.cells" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="teleport" type="String" visibility="public" isStatic="true"/>
+        <Field name="destX" type="int" visibility="private"/>
+        <Field name="destY" type="int" visibility="private"/>
+        <Field name="numeroPuzzle" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="destX"/>
+          <Argument type="int" name="destY"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDestX" returnType="int" visibility="public"/>
+        <Method name="getDestY" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

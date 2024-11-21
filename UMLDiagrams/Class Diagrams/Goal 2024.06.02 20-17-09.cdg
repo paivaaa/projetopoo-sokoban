@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Goal">
+  <ClassDiagramComponents>
+    <Class name="Goal" package="sokoban.cells" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="goal" type="String" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="SpecialBlock">
+  <ClassDiagramComponents>
+    <Class name="SpecialBlock" package="sokoban.cells" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="greenBlock" type="String" visibility="public" isStatic="true"/>
+        <Field name="greenInGoal" type="String" visibility="public" isStatic="true"/>
+        <Field name="imageBlock" type="Image" visibility="private"/>
+        <Field name="imageBlockGoal" type="Image" visibility="private"/>
+        <Field name="inGoal" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="inGoal"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="isInGoal" returnType="boolean" visibility="public"/>
+        <Method name="setInGoal" returnType="void" visibility="public">
+          <Argument type="boolean" name="inGoal"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

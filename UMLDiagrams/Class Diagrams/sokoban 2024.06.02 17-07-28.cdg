@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="sokoban">
+  <ClassDiagramComponents>
+    <Class name="Background" package="sokoban.cells" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="color" type="Color" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="draw" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+          <Argument type="int" name="px"/>
+          <Argument type="int" name="py"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Block" package="sokoban.cells" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="greenBlock" type="String" visibility="public" isStatic="true"/>
+        <Field name="greenInGoal" type="String" visibility="public" isStatic="true"/>
+        <Field name="imageBlock" type="Image" visibility="private"/>
+        <Field name="imageBlockGoal" type="Image" visibility="private"/>
+        <Field name="blockGoal" type="Clip" visibility="package"/>
+        <Field name="inGoal" type="boolean" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="inGoal"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="draw" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+          <Argument type="int" name="px"/>
+          <Argument type="int" name="py"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="isInGoal" returnType="boolean" visibility="public"/>
+        <Method name="setInGoal" returnType="void" visibility="public">
+          <Argument type="boolean" name="inGoal"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Clear" package="sokoban.cells" visibility="public" isAbstract="true" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Door" package="sokoban.cells" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="porta" type="String" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Element" package="sokoban.cells" visibility="public" xPosition="1100.0" yPosition="97.0">
+      <Fields>
+        <Field name="myImg" type="Image" visibility="protected"/>
+        <Field name="path" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="theme" type="String" visibility="protected" isStatic="true"/>
+        <Field name="imageName" type="String" visibility="protected"/>
+        <Field name="myColor" type="Color" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="imageName"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="draw" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+          <Argument type="int" name="px"/>
+          <Argument type="int" name="py"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+        </Method>
+        <Method name="getMyImg" returnType="Image" visibility="public"/>
+        <Method name="setMyImg" returnType="void" visibility="public">
+          <Argument type="Image" name="myImg"/>
+        </Method>
+        <Method name="loadImage" returnType="Image" visibility="public" isFinal="true">
+          <Argument type="String" name="resourceName"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Empty" package="sokoban.cells" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="empty" type="String" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Goal" package="sokoban.cells" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="goal" type="String" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="OpenDoors" package="sokoban.cells" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="openDoor" type="String" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Player" package="sokoban.cells" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="coordX" type="int" visibility="private"/>
+        <Field name="coordY" type="int" visibility="private"/>
+        <Field name="playerNumber" type="int" visibility="private" isFinal="true"/>
+        <Field name="move" type="Clip" visibility="package"/>
+        <Field name="PLAYER1" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="PLAYER2" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="playerNumber"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="moveXY" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+        </Method>
+        <Method name="getCoordX" returnType="int" visibility="public"/>
+        <Method name="setCoordX" returnType="void" visibility="public">
+          <Argument type="int" name="coordX"/>
+        </Method>
+        <Method name="getCoordY" returnType="int" visibility="public"/>
+        <Method name="setCoordY" returnType="void" visibility="public">
+          <Argument type="int" name="coordY"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SpecialBlock" package="sokoban.cells" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="greenBlock" type="String" visibility="public" isStatic="true"/>
+        <Field name="greenInGoal" type="String" visibility="public" isStatic="true"/>
+        <Field name="imageBlock" type="Image" visibility="private"/>
+        <Field name="imageBlockGoal" type="Image" visibility="private"/>
+        <Field name="inGoal" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="inGoal"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="isInGoal" returnType="boolean" visibility="public"/>
+        <Method name="setInGoal" returnType="void" visibility="public">
+          <Argument type="boolean" name="inGoal"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Teleport" package="sokoban.cells" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="teleport" type="String" visibility="public" isStatic="true"/>
+        <Field name="destX" type="int" visibility="private"/>
+        <Field name="destY" type="int" visibility="private"/>
+        <Field name="numeroPuzzle" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="destX"/>
+          <Argument type="int" name="destY"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDestX" returnType="int" visibility="public"/>
+        <Method name="getDestY" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Wall" package="sokoban.cells" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="wall" type="String" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Definicoes" package="sokoban.gui" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="btnJogar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRegras" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSair" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSom" type="javax.swing.JButton" visibility="private"/>
+        <Field name="centerPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="downPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="leftPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="rightPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="upPanel" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnSairActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnJogarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRegrasActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSomActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EditorPuzzle" package="sokoban.gui" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="btnBlock" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnEmpty" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnGoal" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnPlay" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnPlayer" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSavePuzzle" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnWall" type="javax.swing.JButton" visibility="private"/>
+        <Field name="downPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="leftPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="rightPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="sokobanEditor1" type="sokoban.SokobanEditor" visibility="private"/>
+        <Field name="upPanel" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnEmptyActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnWallActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnBlockActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnGoalActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnPlayerActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSavePuzzleActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnPlayActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="sokobanEditor1KeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FimPuzzleMulti" package="sokoban.gui" visibility="public" isFinal="true" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="jogoMulti1" type="JogoMulti" visibility="private" isFinal="true"/>
+        <Field name="sokobanMulti" type="SokobanMulti" visibility="private" isFinal="true"/>
+        <Field name="clip" type="Clip" visibility="package"/>
+        <Field name="puzzle" type="int" visibility="private"/>
+        <Field name="proxPuzzle" type="int" visibility="private"/>
+        <Field name="bonecoImage" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="btnExit" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnNextLevel" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRestart" type="javax.swing.JButton" visibility="private"/>
+        <Field name="label_empurroes" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_parabens" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_passos" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_tempo" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JogoMulti" name="jogoMulti1"/>
+          <Argument type="SokobanMulti" name="sokobanMulti"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="parametros" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnNextLevelActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRestartActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnExitActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FimPuzzleSingle" package="sokoban.gui" visibility="public" isFinal="true" xPosition="2362.0" yPosition="191.0">
+      <Fields>
+        <Field name="jogoSingle1" type="JogoSingle" visibility="private" isFinal="true"/>
+        <Field name="sokobanSingle" type="SokobanSingle" visibility="private" isFinal="true"/>
+        <Field name="puzzle" type="int" visibility="private"/>
+        <Field name="proxPuzzle" type="int" visibility="private"/>
+        <Field name="bonecoImage" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="btnExit" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnNextLevel" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRestart" type="javax.swing.JButton" visibility="private"/>
+        <Field name="label_empurroes" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_parabens" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_passos" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_tempo" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JogoSingle" name="jogoSingle1"/>
+          <Argument type="SokobanSingle" name="sokobanSingle"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="parametros" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnNextLevelActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRestartActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnExitActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FimPuzzleUniverse" package="sokoban.gui" visibility="public" isFinal="true" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="jogoUniverse1" type="JogoUniverse" visibility="private" isFinal="true"/>
+        <Field name="sokobanUniverse" type="SokobanUniverse" visibility="private" isFinal="true"/>
+        <Field name="puzzle" type="int" visibility="private"/>
+        <Field name="proxPuzzle" type="int" visibility="private"/>
+        <Field name="bonecoImage" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="btnExit" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnNextLevel" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRestart" type="javax.swing.JButton" visibility="private"/>
+        <Field name="label_empurroes" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_parabens" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_passos" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_tempo" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JogoUniverse" name="jogoUniverse1"/>
+          <Argument type="SokobanUniverse" name="sokobanUniverse"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="parametros" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnNextLevelActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRestartActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnExitActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Info" package="sokoban.gui" visibility="public" xPosition="332.0" yPosition="820.0">
+      <Fields>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jTextArea1" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="jTextArea2" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="titleLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="userImg" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="userImg1" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JogoEditor" package="sokoban.gui" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="t" type="Thread" visibility="private"/>
+        <Field name="ini" type="long" visibility="private"/>
+        <Field name="btnLoadPuzzle" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRedo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRestart" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSetting" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnTimer" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="btnUndo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="downPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="empurroesLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="leftPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="modojogoLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="passosLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="rightPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="sokobanPlayEditor1" type="sokoban.SokobanPlayEditor" visibility="private"/>
+        <Field name="sokobanPlayEditor2" type="sokoban.SokobanPlayEditor" visibility="private"/>
+        <Field name="upPanel" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="parametros" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="downPanelKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="btnLoadPuzzleActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="formKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRestartActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnUndoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRedoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JogoMulti" package="sokoban.gui" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="clip" type="Clip" visibility="package"/>
+        <Field name="endOfLevel" type="Clip" visibility="package"/>
+        <Field name="numeroPuzzle" type="int" visibility="private"/>
+        <Field name="guardarPuzzle" type="String" visibility="public"/>
+        <Field name="t" type="Thread" visibility="private"/>
+        <Field name="ini" type="long" visibility="private"/>
+        <Field name="btnRedo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRestart" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSetting" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnTimer" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="btnUndo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="downPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="empurroesLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelNivel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="leftPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="modojogoLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="passosLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="rightPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="sokobanMulti1" type="sokoban.SokobanMulti" visibility="private"/>
+        <Field name="upPanel" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setPuzzle" returnType="void" visibility="public">
+          <Argument type="String" name="puzzle"/>
+        </Method>
+        <Method name="parametros" returnType="void" visibility="public"/>
+        <Method name="atualizarNivelPuzzle" returnType="void" visibility="public"/>
+        <Method name="getNumeroPuzzle" returnType="int" visibility="public"/>
+        <Method name="getTempoDecorrido" returnType="long" visibility="public"/>
+        <Method name="guardaNivelPuzzle" returnType="void" visibility="public"/>
+        <Method name="restartstats" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRestartActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnUndoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="downPanelKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="formKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="btnRedoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSettingActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JogoSingle" package="sokoban.gui" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="clip" type="Clip" visibility="package"/>
+        <Field name="endOfLevel" type="Clip" visibility="package"/>
+        <Field name="numeroPuzzle" type="int" visibility="private"/>
+        <Field name="guardarPuzzle" type="String" visibility="public"/>
+        <Field name="t" type="Thread" visibility="private"/>
+        <Field name="ini" type="long" visibility="private"/>
+        <Field name="btnRedo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRestart" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSetting" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnTimer" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="btnUndo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="dificuldadeLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="downPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="empurroesLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelNivel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="leftPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="passosLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="rightPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="sokobanSingle1" type="sokoban.SokobanSingle" visibility="private"/>
+        <Field name="upPanel" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setPuzzle" returnType="void" visibility="public">
+          <Argument type="String" name="puzzle"/>
+        </Method>
+        <Method name="parametros" returnType="void" visibility="public"/>
+        <Method name="atualizarNivelPuzzle" returnType="void" visibility="public"/>
+        <Method name="getNumeroPuzzle" returnType="int" visibility="public"/>
+        <Method name="getTempoDecorrido" returnType="long" visibility="public"/>
+        <Method name="guardaNivelPuzzle" returnType="void" visibility="public"/>
+        <Method name="restartstats" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRestartActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnUndoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="downPanelKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="formKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="btnRedoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSettingActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JogoUniverse" package="sokoban.gui" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="clip" type="Clip" visibility="package"/>
+        <Field name="endOfLevel" type="Clip" visibility="package"/>
+        <Field name="numeroPuzzle" type="int" visibility="private"/>
+        <Field name="guardarPuzzle" type="String" visibility="public"/>
+        <Field name="t" type="Thread" visibility="private"/>
+        <Field name="ini" type="long" visibility="private"/>
+        <Field name="btnRedo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRestart" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSetting" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnTimer" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="btnUndo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="downPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="empurroesLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelNivel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="leftPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="modojogoLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="passosLabel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="rightPanel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="sokobanUniverse1" type="sokoban.SokobanUniverse" visibility="private"/>
+        <Field name="upPanel" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setPuzzle" returnType="void" visibility="public">
+          <Argument type="String" name="puzzle"/>
+        </Method>
+        <Method name="parametros" returnType="void" visibility="public"/>
+        <Method name="atualizarNivelPuzzle" returnType="void" visibility="public"/>
+        <Method name="getNumeroPuzzle" returnType="int" visibility="public"/>
+        <Method name="getTempoDecorrido" returnType="long" visibility="public"/>
+        <Method name="guardaNivelPuzzle" returnType="void" visibility="public"/>
+        <Method name="restartstats" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRestartActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnUndoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="downPanelKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="formKeyPressed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="btnRedoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MenuMain" package="sokoban.gui" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="btnEditorPuzzle" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnExit" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnInfo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnMultiplayer" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRegras" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSingleplayer" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnSingleplayerActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnExitActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnInfoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnMultiplayerActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnEditorPuzzleActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnRegrasActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MenuMultiPlayer" package="sokoban.gui" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="sokobamulti" type="SokobanMulti" visibility="private"/>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button10" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button11" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button12" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button13" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button14" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button15" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button16" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button17" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button18" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button19" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button20" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button5" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button6" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button7" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button8" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button9" type="javax.swing.JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setSokobanSingle" returnType="void" visibility="public">
+          <Argument type="SokobanMulti" name="sokobamulti"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button8ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button11ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button12ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button13ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button5ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button6ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button7ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button9ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button10ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button14ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button15ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button17ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button16ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button18ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button19ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button20ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MenuNiveisDificil" package="sokoban.gui" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="button41" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button42" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button43" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button44" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button45" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button46" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button47" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button48" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button49" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button50" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button51" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button52" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button53" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button54" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button55" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button56" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button57" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button58" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button59" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button60" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton16" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton23" type="javax.swing.JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button48ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button51ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button52ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button53ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton16ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton23ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button41ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button42ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button43ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button44ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button45ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button46ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button47ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button49ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button50ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button54ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button55ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button56ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button57ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button58ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button59ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button60ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MenuNiveisFacil" package="sokoban.gui" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="sokobanSingle" type="SokobanSingle" visibility="private"/>
+        <Field name="btnArrowright" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button10" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button11" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button12" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button13" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button14" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button15" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button16" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button17" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button18" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button19" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button20" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button5" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button6" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button7" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button8" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button9" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton16" type="javax.swing.JButton" visibility="private"/>
+        <Field name="pagenum" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setSokobanSingle" returnType="void" visibility="public">
+          <Argument type="SokobanSingle" name="sokobanSingle"/>
+        </Method>
+        <Method name="btnIsComplete" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button8ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button11ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button12ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button13ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton16ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button5ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button6ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button7ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button9ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button10ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button14ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button15ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button16ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button17ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button18ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button19ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button20ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnArrowrightActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MenuNiveisMedia" package="sokoban.gui" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button21" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button22" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button23" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button24" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button25" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button26" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button27" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button28" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button29" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button30" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button31" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button32" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button33" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button34" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button35" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button36" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button37" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button38" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button39" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button40" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton22" type="javax.swing.JButton" visibility="private"/>
+        <Field name="pagenum" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button28ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button31ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button32ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button33ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button22ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton22ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button21ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button23ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button24ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button25ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button26ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button27ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button29ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button30ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button34ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button35ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button36ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button37ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button38ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button39ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button40ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MenuSinglePlayer" package="sokoban.gui" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Fields>
+        <Field name="btnJogoOriginal" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnJogoUniverse" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnJogoOriginalActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnJogoUniverseActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MenuUniverse" package="sokoban.gui" visibility="public" xPosition="1220.0" yPosition="1220.0">
+      <Fields>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button10" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button11" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button12" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button13" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button14" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button15" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button16" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button17" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button18" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button19" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button20" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button5" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button6" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button7" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button8" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button9" type="javax.swing.JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button11ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button12ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button13ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button8ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Regras" package="sokoban.gui" visibility="public" xPosition="1520.0" yPosition="1220.0">
+      <Fields>
+        <Field name="btnVoltar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelRegras" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnVoltarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Sokoban" package="sokoban" visibility="public" isAbstract="true" xPosition="1820.0" yPosition="1220.0">
+      <Fields>
+        <Field name="world" type="Element[][]" visibility="package"/>
+        <Field name="undoRedo" type="ArrayList&lt;String&gt;" visibility="package"/>
+        <Field name="startPuzzle" type="ArrayList&lt;String&gt;" visibility="package"/>
+        <Field name="undoIndex" type="int" visibility="private"/>
+        <Field name="player" type="Player" visibility="public"/>
+        <Field name="player2" type="Player" visibility="public"/>
+        <Field name="empurroes" type="int" visibility="private"/>
+        <Field name="passos" type="int" visibility="private"/>
+        <Field name="teleport1" type="Teleport" visibility="private"/>
+        <Field name="teleport2" type="Teleport" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setPuzzle" returnType="void" visibility="public">
+          <Argument type="String" name="p"/>
+        </Method>
+        <Method name="getColumns" returnType="int" visibility="public"/>
+        <Method name="getWorld" returnType="Element[][]" visibility="public"/>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+        </Method>
+        <Method name="move" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+          <Argument type="Player" name="player"/>
+        </Method>
+        <Method name="movePlayer" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+          <Argument type="int" name="playerNumber"/>
+        </Method>
+        <Method name="isComplete" returnType="boolean" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public">
+          <Argument type="int" name="level"/>
+        </Method>
+        <Method name="redo" returnType="void" visibility="public"/>
+        <Method name="apagarPuzzle" returnType="void" visibility="public"/>
+        <Method name="removeDoor" returnType="void" visibility="public"/>
+        <Method name="resetEmpurroes" returnType="void" visibility="public"/>
+        <Method name="resetPassos" returnType="void" visibility="public"/>
+        <Method name="restartStatistics" returnType="void" visibility="public"/>
+        <Method name="restartArray" returnType="void" visibility="public"/>
+        <Method name="getEmpurroes" returnType="int" visibility="public"/>
+        <Method name="getPassos" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SokobanMulti" package="sokoban" visibility="public" xPosition="2120.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="movePlayer" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+          <Argument type="int" name="playerNumber"/>
+        </Method>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SokobanPlayEditor" package="sokoban" visibility="public" xPosition="20.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+        </Method>
+        <Method name="movePlayer" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+          <Argument type="int" name="playerNumber"/>
+        </Method>
+        <Method name="loadFromFile" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SokobanSingle" package="sokoban" visibility="public" xPosition="320.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+        </Method>
+        <Method name="movePlayer" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+          <Argument type="int" name="playerNumber"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SokobanSons" package="sokoban" visibility="public" xPosition="620.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="carregarSom" returnType="Clip" visibility="public" isStatic="true">
+          <Argument type="String" name="ficheiro"/>
+        </Method>
+        <Method name="setVolume" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Clip" name="clip"/>
+          <Argument type="double" name="volume"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SokobanUniverse" package="sokoban" visibility="public" xPosition="920.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="Graphics" name="gr"/>
+        </Method>
+        <Method name="movePlayer" returnType="void" visibility="public">
+          <Argument type="int" name="dx"/>
+          <Argument type="int" name="dy"/>
+          <Argument type="int" name="playerNumber"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="sokoban.cells.Empty" target="sokoban.cells.Clear"/>
+    <IsRelation name="is" source="sokoban.cells.SpecialBlock" target="sokoban.cells.Element"/>
+    <HasRelation name="sokobanUniverse" source="sokoban.gui.FimPuzzleUniverse" target="sokoban.SokobanUniverse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="player" source="sokoban.Sokoban" target="sokoban.cells.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="player2" source="sokoban.Sokoban" target="sokoban.cells.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sokobanMulti" source="sokoban.gui.FimPuzzleMulti" target="sokoban.SokobanMulti" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.cells.Wall" target="sokoban.cells.Element"/>
+    <HasRelation name="jogoUniverse1" source="sokoban.gui.FimPuzzleUniverse" target="sokoban.gui.JogoUniverse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jogoSingle1" source="sokoban.gui.FimPuzzleSingle" target="sokoban.gui.JogoSingle" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.cells.Teleport" target="sokoban.cells.Element"/>
+    <IsRelation name="is" source="sokoban.cells.Player" target="sokoban.cells.Element"/>
+    <IsRelation name="is" source="sokoban.cells.Clear" target="sokoban.cells.Element"/>
+    <IsRelation name="is" source="sokoban.cells.Door" target="sokoban.cells.Element"/>
+    <HasRelation name="sokobamulti" source="sokoban.gui.MenuMultiPlayer" target="sokoban.SokobanMulti" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.SokobanUniverse" target="sokoban.Sokoban"/>
+    <UseRelation source="sokoban.gui.MenuNiveisFacil" target="sokoban.SokobanSingle" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="teleport2" source="sokoban.Sokoban" target="sokoban.cells.Teleport" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="teleport1" source="sokoban.Sokoban" target="sokoban.cells.Teleport" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.SokobanMulti" target="sokoban.Sokoban"/>
+    <HasRelation name="sokobanSingle" source="sokoban.gui.FimPuzzleSingle" target="sokoban.SokobanSingle" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="sokoban.gui.MenuMultiPlayer" target="sokoban.SokobanMulti" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.SokobanSingle" target="sokoban.Sokoban"/>
+    <IsRelation name="is" source="sokoban.cells.Goal" target="sokoban.cells.Clear"/>
+    <HasRelation name="sokobanSingle" source="sokoban.gui.MenuNiveisFacil" target="sokoban.SokobanSingle" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="sokoban.Sokoban" target="sokoban.cells.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.cells.Background" target="sokoban.cells.Element"/>
+    <HasRelation name="jogoMulti1" source="sokoban.gui.FimPuzzleMulti" target="sokoban.gui.JogoMulti" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.cells.Block" target="sokoban.cells.Element"/>
+    <UseRelation source="sokoban.Sokoban" target="sokoban.cells.Element" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="sokoban.cells.OpenDoors" target="sokoban.cells.Clear"/>
+    <IsRelation name="is" source="sokoban.SokobanPlayEditor" target="sokoban.Sokoban"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
